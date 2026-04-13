@@ -1,0 +1,6 @@
+# Aircontrols.in
+Air Control website 
+User-agent: *
+Allow: /
+
+Sitemap: https://aircontrols.in/sitemap.xml
