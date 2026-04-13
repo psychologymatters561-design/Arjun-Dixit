@@ -1,12 +1,36 @@
-<!DOCTYPE html>
+import fs from 'fs';
+import path from 'path';
+
+const services = [
+  { id: 'ac-repair', name: 'AC Repair', desc: 'AC Repair and Troubleshooting' },
+  { id: 'ac-service', name: 'AC Service', desc: 'AC Servicing and Cleaning' },
+  { id: 'ac-installation', name: 'AC Installation', desc: 'AC Installation and Fitting' },
+  { id: 'ac-amc', name: 'AC AMC', desc: 'AC Annual Maintenance Contract' }
+];
+
+const cities = [
+  { id: 'delhi', name: 'Delhi' },
+  { id: 'gurgaon', name: 'Gurgaon' },
+  { id: 'noida', name: 'Noida' },
+  { id: 'faridabad', name: 'Faridabad' }
+];
+
+const micromarkets = {
+  delhi: 'Saket, Vasant Kunj, Vasant Vihar, Malviya Nagar, Hauz Khas, Greater Kailash, Defence Colony, Lajpat Nagar, Nehru Place, Kalkaji, Okhla, Dwarka, Janakpuri, Uttam Nagar, Vikaspuri, Punjabi Bagh, Paschim Vihar, Rohini, Pitampura, Shalimar Bagh, Model Town, Civil Lines, Laxmi Nagar, Mayur Vihar, Patparganj, Preet Vihar, Connaught Place, Karol Bagh',
+  gurgaon: 'DLF Phase 1-5, Sushant Lok, South City, Palam Vihar, Nirvana Country, Malibu Towne, Sectors 4-47, Golf Course Road, Sectors 42-58, New Gurgaon, Sectors 67-95, Dwarka Expressway, Manesar, Udyog Vihar',
+  noida: 'Sectors 12-66, Premium Sectors 76-137, Greater Noida, Knowledge Park, Alpha, Beta, Gamma, Delta, Omega, Omaxe City, Gaur City',
+  faridabad: 'NIT, Sectors 7-46, Green Field Colony, Sainik Colony, Neharpar, Sectors 55-90, Ballabgarh, IMT Faridabad'
+};
+
+const template = (title, description, keywords, canonical, h1, lead, type, city, serviceName) => `<!DOCTYPE html>
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AC Service in Noida | Air Control</title>
-  <meta name="description" content="Professional ac service in Noida. Fast response, expert engineers, and guaranteed satisfaction. Call +91 93122 64832.">
-  <meta name="keywords" content="ac service noida, best ac service in noida">
-  <link rel="canonical" href="https://aircontrols.in/locations/noida/ac-service/">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta name="keywords" content="${keywords}">
+  <link rel="canonical" href="https://aircontrols.in${canonical}">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,12 +101,12 @@
   </nav>
 
   <div class="breadcrumb">
-    <a href="/">Home</a> > <a href="/locations/noida/">Noida</a> > AC Service
+    <a href="/">Home</a> > ${city ? `<a href="/locations/${city.toLowerCase()}/">${city}</a> > ` : ''}${serviceName}
   </div>
 
   <section class="page-hero" style="padding: 80px 24px; text-align: center; background: var(--navy); color: white;">
-    <h1 style="font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 20px;">AC Service in Noida</h1>
-    <p style="font-size: 18px; color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 32px;">Expert ac service services covering all major areas and sectors in Noida.</p>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 20px;">${h1}</h1>
+    <p style="font-size: 18px; color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 32px;">${lead}</p>
     <div style="display: flex; gap: 16px; justify-content: center;">
       <a href="tel:+919312264832" class="btn btn-gold" style="text-decoration:none;">Call +91 93122 64832</a>
       <a href="https://wa.me/919312264832" class="btn btn-navy" style="text-decoration:none;">WhatsApp Now</a>
@@ -90,19 +114,39 @@
   </section>
 
   <section class="content-section">
-    <h2>Professional AC Service in Noida</h2>
-    <p>Air Control provides expert ac service with 38 years of experience. Whether you need emergency repairs, routine maintenance, or a new installation, our certified engineers are ready to help.</p>
+    <h2>Professional ${serviceName} ${city ? 'in ' + city : 'Delhi NCR'}</h2>
+    <p>Air Control provides expert ${serviceName.toLowerCase()} with 38 years of experience. Whether you need emergency repairs, routine maintenance, or a new installation, our certified engineers are ready to help.</p>
     
-    
+    ${type === 'city_hub' ? `
+    <div class="grid-cards">
+      ${services.map(s => `
+        <div class="card-item">
+          <h3>${s.name} in ${city}</h3>
+          <p>Expert ${s.name.toLowerCase()} services across all areas of ${city}.</p>
+          <a href="/locations/${city.toLowerCase()}/${s.id}/">View Details →</a>
+        </div>
+      `).join('')}
+    </div>
+    ` : ''}
 
-    
+    ${type === 'service' ? `
+    <div class="grid-cards">
+      ${cities.map(c => `
+        <div class="card-item">
+          <h3>${serviceName} in ${c.name}</h3>
+          <p>Professional ${serviceName.toLowerCase()} in ${c.name} and surrounding areas.</p>
+          <a href="/locations/${c.id}/${canonical.split('/')[2]}/">View Details →</a>
+        </div>
+      `).join('')}
+    </div>
+    ` : ''}
 
-    <h2 style="margin-top: 60px;">Areas We Serve in Noida</h2>
-    <p>Sectors 12-66, Premium Sectors 76-137, Greater Noida, Knowledge Park, Alpha, Beta, Gamma, Delta, Omega, Omaxe City, Gaur City</p>
+    <h2 style="margin-top: 60px;">Areas We Serve ${city ? 'in ' + city : ''}</h2>
+    <p>${city ? micromarkets[city.toLowerCase()] : Object.values(micromarkets).join(', ')}</p>
 
     <h2 style="margin-top: 60px;">Frequently Asked Questions</h2>
     <div class="faq-item">
-      <h3>Why choose Air Control for AC Service in Noida?</h3>
+      <h3>Why choose Air Control for ${serviceName} ${city ? 'in ' + city : ''}?</h3>
       <p>With over 38 years of experience, we provide engineering-grade HVAC solutions. We use only safe, non-flammable refrigerants and guarantee a 2-hour emergency response.</p>
     </div>
     <div class="faq-item">
@@ -155,11 +199,108 @@
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "Service"],
     "name": "Air Control",
-    "serviceType": "AC Service",
-    "areaServed": "Noida",
+    "serviceType": "${serviceName}",
+    "areaServed": "${city ? city : 'Delhi NCR'}",
     "telephone": "+919312264832",
-    "url": "https://aircontrols.in/locations/noida/ac-service/"
+    "url": "https://aircontrols.in${canonical}"
   }
   </script>
 </body>
-</html>
+</html>`;
+
+function ensureDir(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+const sitemapUrls = [];
+
+// 1. Service Pages (4)
+ensureDir('./services');
+services.forEach(s => {
+  const dir = `./services/${s.id}`;
+  ensureDir(dir);
+  const canonical = `/services/${s.id}/`;
+  const html = template(
+    `${s.name} Delhi NCR | Air Control Since 1987`,
+    `Expert ${s.name.toLowerCase()} services across Delhi NCR. 38 years of experience, 2-hour emergency response. Call +91 93122 64832.`,
+    `${s.name.toLowerCase()} delhi, ${s.name.toLowerCase()} gurgaon, ${s.name.toLowerCase()} noida, ${s.name.toLowerCase()} faridabad`,
+    canonical,
+    `${s.name} Delhi NCR`,
+    `Professional ${s.name.toLowerCase()} services for residential, commercial, and industrial clients across Delhi NCR.`,
+    'service',
+    null,
+    s.name
+  );
+  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  sitemapUrls.push({ loc: canonical, priority: '0.9' });
+});
+
+// 2. City Hub Pages (4)
+ensureDir('./locations');
+cities.forEach(c => {
+  const dir = `./locations/${c.id}`;
+  ensureDir(dir);
+  const canonical = `/locations/${c.id}/`;
+  const html = template(
+    `AC Repair & Service in ${c.name} | Air Control`,
+    `Top-rated AC repair, service, installation, and AMC in ${c.name}. Trusted by embassies and Fortune 500 companies. Call +91 93122 64832.`,
+    `ac repair ${c.name.toLowerCase()}, ac service ${c.name.toLowerCase()}, ac installation ${c.name.toLowerCase()}, ac amc ${c.name.toLowerCase()}`,
+    canonical,
+    `AC Repair & Service in ${c.name}`,
+    `Comprehensive air conditioning solutions in ${c.name} with a 100% safety record and 38 years of trust.`,
+    'city_hub',
+    c.name,
+    'AC Services'
+  );
+  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  sitemapUrls.push({ loc: canonical, priority: '0.8' });
+
+  // 3. City x Service Pages (16)
+  services.forEach(s => {
+    const subDir = `./locations/${c.id}/${s.id}`;
+    ensureDir(subDir);
+    const subCanonical = `/locations/${c.id}/${s.id}/`;
+    const subHtml = template(
+      `${s.name} in ${c.name} | Air Control`,
+      `Professional ${s.name.toLowerCase()} in ${c.name}. Fast response, expert engineers, and guaranteed satisfaction. Call +91 93122 64832.`,
+      `${s.name.toLowerCase()} ${c.name.toLowerCase()}, best ${s.name.toLowerCase()} in ${c.name.toLowerCase()}`,
+      subCanonical,
+      `${s.name} in ${c.name}`,
+      `Expert ${s.name.toLowerCase()} services covering all major areas and sectors in ${c.name}.`,
+      'city_service',
+      c.name,
+      s.name
+    );
+    fs.writeFileSync(path.join(subDir, 'index.html'), subHtml);
+    sitemapUrls.push({ loc: subCanonical, priority: '0.9' });
+  });
+});
+
+// Update sitemap.xml
+let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://aircontrols.in/</loc>
+    <lastmod>2025-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+`;
+
+const today = new Date().toISOString().split('T')[0];
+sitemapUrls.forEach(url => {
+  sitemapContent += `  <url>
+    <loc>https://aircontrols.in${url.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${url.priority}</priority>
+  </url>
+`;
+});
+
+sitemapContent += `</urlset>`;
+fs.writeFileSync('./sitemap.xml', sitemapContent);
+
+console.log('Generated 24 pages and updated sitemap.xml');
