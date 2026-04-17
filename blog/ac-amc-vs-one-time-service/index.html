@@ -38,12 +38,9 @@
     .cta-inline h3{color:#fff;margin:0 0 8px;font-size:1.2rem}
     .cta-inline p{color:rgba(255,255,255,.8);margin:0 0 16px}
     .cta-inline .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .blog-faq details{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px}
-    .blog-faq summary{padding:14px 18px;cursor:pointer;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center}
-    .blog-faq summary::-webkit-details-marker{display:none}
-    .blog-faq summary::after{content:"▾";color:var(--gold)}
-    .blog-faq details[open] summary::after{content:"▴"}
-    .blog-faq .faq-ans{padding:0 18px 14px;color:#374151;line-height:1.8}
+    .blog-faq .faq-item{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px;overflow:hidden;background:#fff}
+    .blog-faq .faq-q{padding:14px 18px;font-weight:600;color:var(--navy);font-size:14.5px;display:block;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+    .blog-faq .faq-ans{padding:14px 18px;color:#374151;line-height:1.8;font-size:14px}
     .check{color:#16a34a}
     .cross{color:#dc2626}
   </style>
@@ -52,7 +49,7 @@
     "@context":"https://schema.org",
     "@type":"Article",
     "headline":"AC AMC vs One-Time Service: Which Is Better for You?",
-    "author":{"@type":"Organization","name":"Air Control"},
+    "author":{"@type":"Person","name":"Ajay Kumar","jobTitle":"Senior HVAC Engineer","worksFor":{"@type":"Organization","name":"Air Control"},"knowsAbout":["HVAC systems","AC repair","Refrigerants R-32 R-410A R-22","VRF systems","Split AC installation Delhi NCR"]},
     "publisher":{"@type":"Organization","name":"Air Control"},
     "datePublished":"2025-04-13",
     "dateModified":"2025-04-13",
@@ -123,8 +120,20 @@
   <h1>AC AMC vs One-Time Service: Which Is Better for You?</h1>
   <p class="meta">By Air Control Experts &nbsp;|&nbsp; Updated April 2025 &nbsp;|&nbsp; 7 min read</p>
 </div>
+  <div class="author-bio">
+    <div class="author-avatar">AK</div>
+    <div>
+      <strong itemprop="name">Ajay Kumar</strong>
+      <span class="author-cred" itemprop="jobTitle">Senior HVAC Engineer, Air Control (est. 1987) · 38 years AC repair &amp; HVAC experience across Delhi NCR · Served 15+ embassies &amp; Fortune 500 campuses</span>
+    </div>
+  </div>
 
 <div class="blog-body">
+  <div style="background:#f0f9ff;border:2px solid #6366f1;border-radius:12px;padding:20px 24px;margin-bottom:32px">
+    <div style="font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4338ca;margin-bottom:8px">💡 Quick Answer</div>
+    <p style="margin:0;font-size:1rem;line-height:1.7;color:#1e3a5f"><strong>AMC vs one-time service:</strong> Choose <strong>AMC</strong> if your AC is 3+ years old, runs 8+ hours/day, or you want guaranteed priority emergency response. AMC costs ₹2,500–₹4,500/year for a 1.5-ton AC and includes 2 services + unlimited emergency calls. Choose <strong>pay-per-visit</strong> if your AC is brand new (under warranty) or used very rarely. For most Delhi NCR households using AC heavily in summer, AMC pays for itself with a single emergency repair prevention.</p>
+  </div>
+
   <p>The age-old question for Delhi NCR homeowners: pay for an AC AMC (Annual Maintenance Contract) or just call a technician when something goes wrong? Both approaches have their place. This guide breaks down the real costs, benefits, and situations where each makes financial sense — with actual numbers from Delhi NCR pricing.</p>
 
   <h2>What Is an AC AMC?</h2>
@@ -213,30 +222,12 @@
 
   <h2>Frequently Asked Questions</h2>
   <div class="blog-faq">
-    <details>
-      <summary>What is the difference between AC AMC and one-time service?</summary>
-      <div class="faq-ans">An AC AMC is a pre-paid annual plan that includes 2 scheduled services, unlimited emergency visit calls, and priority response. One-time service means you pay per visit as needed. AMC is better if you use your AC heavily (8+ hours/day) or have older units prone to breakdowns.</div>
-    </details>
-    <details>
-      <summary>Is AC AMC worth it in India?</summary>
-      <div class="faq-ans">Yes, for most households in Delhi NCR. A single emergency repair call can cost ₹1,500–₹5,000. An AMC plan covering 2 services + emergency calls costs ₹2,500–₹5,000 annually. If you have even 1 emergency repair per year, AMC pays for itself. For newer ACs (0-3 years), one-time service may be more economical.</div>
-    </details>
-    <details>
-      <summary>What is a comprehensive vs non-comprehensive AMC?</summary>
-      <div class="faq-ans">A comprehensive AMC covers both service (labour) AND parts — if something fails and needs replacement, the parts cost is included. A non-comprehensive AMC covers service visits and labour only. Comprehensive AMC costs more but gives complete peace of mind.</div>
-    </details>
-    <details>
-      <summary>What does AC AMC not cover?</summary>
-      <div class="faq-ans">Typical AC AMC exclusions: refrigerant (gas) refilling charges, physical damage from misuse, damage from electrical surges or lightning, compressor replacement on older units, cosmetic damage to panels. Always read the AMC terms carefully.</div>
-    </details>
-    <details>
-      <summary>Can I get AMC for an old AC?</summary>
-      <div class="faq-ans">Yes, but most AMC providers will inspect the AC first before issuing an AMC on older units (5+ years). Air Control offers AMC for ACs of all ages after a paid inspection.</div>
-    </details>
-    <details>
-      <summary>How much does AC AMC cost in Delhi NCR?</summary>
-      <div class="faq-ans">Air Control's AC AMC prices: Non-comprehensive AMC from ₹2,500 per unit/year for 1.5-ton split AC. Comprehensive AMC from ₹4,500 per unit/year. Multi-unit discounts available. Call for current pricing.</div>
-    </details>
+    <div class="faq-item"><div class="faq-q">What is the difference between AC AMC and one-time service?</div><div class="faq-ans">An AC AMC is a pre-paid annual plan that includes 2 scheduled services, unlimited emergency visit calls, and priority response. One-time service means you pay per visit as needed. AMC is better if you use your AC heavily (8+ hours/day) or have older units prone to breakdowns.</div></div>
+    <div class="faq-item"><div class="faq-q">Is AC AMC worth it in India?</div><div class="faq-ans">Yes, for most households in Delhi NCR. A single emergency repair call can cost ₹1,500–₹5,000. An AMC plan covering 2 services + emergency calls costs ₹2,500–₹5,000 annually. If you have even 1 emergency repair per year, AMC pays for itself. For newer ACs (0-3 years), one-time service may be more economical.</div></div>
+    <div class="faq-item"><div class="faq-q">What is a comprehensive vs non-comprehensive AMC?</div><div class="faq-ans">A comprehensive AMC covers both service (labour) AND parts — if something fails and needs replacement, the parts cost is included. A non-comprehensive AMC covers service visits and labour only. Comprehensive AMC costs more but gives complete peace of mind.</div></div>
+    <div class="faq-item"><div class="faq-q">What does AC AMC not cover?</div><div class="faq-ans">Typical AC AMC exclusions: refrigerant (gas) refilling charges, physical damage from misuse, damage from electrical surges or lightning, compressor replacement on older units, cosmetic damage to panels. Always read the AMC terms carefully.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I get AMC for an old AC?</div><div class="faq-ans">Yes, but most AMC providers will inspect the AC first before issuing an AMC on older units (5+ years). Air Control offers AMC for ACs of all ages after a paid inspection.</div></div>
+    <div class="faq-item"><div class="faq-q">How much does AC AMC cost in Delhi NCR?</div><div class="faq-ans">Air Control's AC AMC prices: Non-comprehensive AMC from ₹2,500 per unit/year for 1.5-ton split AC. Comprehensive AMC from ₹4,500 per unit/year. Multi-unit discounts available. Call for current pricing.</div></div>
   </div>
 
   <h2>Related Articles &amp; Services</h2>
