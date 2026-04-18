@@ -128,14 +128,14 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
   <a href="/#why">Why Air Control</a>
-  <a class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobServices">
     <a href="/services/ac-repair/">AC Repair</a>
     <a href="/services/ac-service/">AC Service &amp; Cleaning</a>
     <a href="/services/ac-installation/">AC Installation</a>
     <a href="/services/ac-amc/">AC Annual Maintenance (AMC)</a>
   </div>
-  <a class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobLocations">
     <a href="/locations/delhi/">Delhi</a>
     <a href="/locations/gurgaon/">Gurgaon</a>
@@ -348,6 +348,18 @@ function toggleMobSection(id){
   document.querySelectorAll('.mob-section-header').forEach(function(s){s.classList.remove('expanded');});
   if(!isOpen){sec.classList.add('expanded');hdr.classList.add('expanded');}
 }
+// Desktop dropdown: click-to-open (for touch/tablet devices)
+document.querySelectorAll('.nav-dropdown > a').forEach(function(link){
+  link.addEventListener('click', function(e){
+    var dd = this.parentElement;
+    var isOpen = dd.classList.contains('click-open');
+    document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+    if(!isOpen){ dd.classList.add('click-open'); e.preventDefault(); }
+  });
+});
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+});
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click',function(){
     var item=this.parentElement;

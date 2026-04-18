@@ -54,7 +54,7 @@
 .nav-dropdown-menu li{list-style:none}
 .nav-dropdown-menu li a{display:block;padding:10px 18px;color:var(--white);font-size:14px;font-weight:500;transition:background .2s,color .2s}
 .nav-dropdown-menu li a:hover{background:rgba(200,168,75,.12);color:var(--gold)}
-.nav-dropdown:hover .nav-dropdown-menu{display:block}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.click-open .nav-dropdown-menu{display:block}
 
 /* ===== BREADCRUMB ===== */
 .breadcrumb{background:var(--light);padding:10px 0;font-size:13px;color:var(--gray)}
@@ -188,9 +188,18 @@
   display:flex !important;
   justify-content:space-between;
   align-items:center;
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 0;
   cursor:pointer;
   color:rgba(255,255,255,.85) !important;
   font-weight:600 !important;
+  font-size:16px;
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.2px;
 }
 .mob-section-header .mob-arrow{
   font-size:18px;
@@ -547,16 +556,16 @@ ADVANCED SEO META (HVAC DOMINATION)
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a onclick="navigate('home');toggleMobileNav()">Home</a>
-  <a onclick="navigate('why');toggleMobileNav()">Why Air Control</a>
-  <a class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></a>
+  <a href="/" onclick="toggleMobileNav()">Home</a>
+  <a href="/#why" onclick="toggleMobileNav()">Why Air Control</a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobServices">
     <a href="/services/ac-repair/">AC Repair</a>
     <a href="/services/ac-service/">AC Service &amp; Cleaning</a>
     <a href="/services/ac-installation/">AC Installation</a>
     <a href="/services/ac-amc/">AC Annual Maintenance (AMC)</a>
   </div>
-  <a class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobLocations">
     <a href="/locations/delhi/">Delhi</a>
     <a href="/locations/gurgaon/">Gurgaon</a>
@@ -564,7 +573,7 @@ ADVANCED SEO META (HVAC DOMINATION)
     <a href="/locations/faridabad/">Faridabad</a>
   </div>
   <a href="/blog/" onclick="toggleMobileNav()">Blog &amp; AC Tips</a>
-  <a onclick="navigate('industries');toggleMobileNav()">Industries</a>
+  <a href="/#industries" onclick="toggleMobileNav()">Industries</a>
   <a onclick="navigate('contact');toggleMobileNav()">Reviews &amp; Contact</a>
   <a class="mob-cta" href="tel:+919312264832">📞 Call +91 93122 64832 →</a>
 </div>
@@ -607,7 +616,7 @@ ADVANCED SEO META (HVAC DOMINATION)
         </div>
       </div>
       <!-- HERO QUICK LEAD FORM -->
-      <div class="hero-card-float reveal-r d2">
+      <div class="hero-card-float">
         <h3>Book AC Repair — Same-Day Response</h3>
         <p>Tell us your AC problem. Our technician calls you back within 2 hours. No obligation, transparent pricing.</p>
         <div class="hero-form-quick">
@@ -1648,13 +1657,25 @@ function toggleMobileNav(){
 }
 function toggleMobSection(id){
   const sec = document.getElementById(id);
+  if(!sec) return;
   const hdr = sec.previousElementSibling;
   const isOpen = sec.classList.contains('expanded');
-  // close all first
   document.querySelectorAll('.mob-section').forEach(s=>s.classList.remove('expanded'));
   document.querySelectorAll('.mob-section-header').forEach(s=>s.classList.remove('expanded'));
-  if(!isOpen){ sec.classList.add('expanded'); hdr.classList.add('expanded'); }
+  if(!isOpen){ sec.classList.add('expanded'); if(hdr) hdr.classList.add('expanded'); }
 }
+// Desktop dropdown: also open on click for touch devices
+document.querySelectorAll('.nav-dropdown > a').forEach(function(link){
+  link.addEventListener('click', function(e){
+    const dd = this.parentElement;
+    const isOpen = dd.classList.contains('click-open');
+    document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+    if(!isOpen){ dd.classList.add('click-open'); e.preventDefault(); }
+  });
+});
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+});
 
 /* ================================================================
    SCROLL REVEAL
