@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AC Repair & Service Delhi | Air Control Since 1987</title>
-<meta name="description" content="Expert AC repair, service, installation & AMC in Delhi. All areas including South Delhi, Dwarka, Rohini, Mayur Vihar, Karol Bagh and all NCR zones. Call +91 93122 64832.">
+<meta name="description" content="AC repair, service, installation & AMC in Delhi. South, West, North, East & Central Delhi. All areas. Same-day. Call +91 93122 64832.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Air Control">
 <link rel="canonical" href="https://aircontrols.in/locations/delhi/">
@@ -63,10 +63,12 @@
       </ul>
     </li>
     <li><a href="/#industries">Industries</a></li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a class="nav-cta-btn" href="tel:+919312264832">📞 Call Now</a>
+    <a class="nav-cta-btn" href="tel:+919312264832"><span class="nav-live-dot"></span>Book AC Repair</a>
+    <a href="tel:+919312264832" class="mob-call-btn" aria-label="Call">📞</a>
     <div class="hamburger" onclick="toggleMobileNav()" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -89,6 +91,7 @@
   </div>
   <a href="/#industries">Industries</a>
   <a href="/#contact">Contact</a>
+  <a href="/blog/">Blog &amp; AC Tips</a>
   <a class="mob-cta" href="tel:+919312264832">📞 Call Now →</a>
 </div><nav class="breadcrumb"><div class="container"><a href="/">Home</a> › <a href="/locations/delhi/">Locations</a> › <span>Delhi</span></div></nav><section class="static-hero">
   <div class="container">
@@ -245,6 +248,18 @@ function toggleMobSection(id){
   document.querySelectorAll('.mob-section-header').forEach(function(s){s.classList.remove('expanded');});
   if(!isOpen){sec.classList.add('expanded');hdr.classList.add('expanded');}
 }
+// Desktop dropdown: click-to-open (for touch/tablet devices)
+document.querySelectorAll('.nav-dropdown > a').forEach(function(link){
+  link.addEventListener('click', function(e){
+    var dd = this.parentElement;
+    var isOpen = dd.classList.contains('click-open');
+    document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+    if(!isOpen){ dd.classList.add('click-open'); e.preventDefault(); }
+  });
+});
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown.click-open').forEach(function(d){ d.classList.remove('click-open'); });
+});
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click',function(){
     var item=this.parentElement;
