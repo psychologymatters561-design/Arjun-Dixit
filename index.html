@@ -80,6 +80,13 @@
 .prob-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .prob-card p{font-size:13px;color:var(--gray);line-height:1.6}
 
+/* ===== HOME PROBLEM CARDS ===== */
+.prob-home-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r14);padding:22px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.prob-home-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-med);border-color:var(--border-gold)}
+.prob-home-icon{font-size:32px;margin-bottom:12px}
+.prob-home-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:7px}
+.prob-home-card p{font-size:13px;color:var(--gray);line-height:1.58}
+
 /* ===== MICROMARKET GRID ===== */
 .micro-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .micro-tag{background:var(--light);border:1px solid var(--border);border-radius:var(--rpill);padding:7px 16px;font-size:13px;font-weight:500;color:var(--navy);transition:background .2s,color .2s,border-color .2s}
@@ -222,6 +229,9 @@
   .nav-right .hamburger{display:none}
   .nav-right .nav-cta-btn{display:inline-flex}
 }
+/* === NAV CTA LIVE DOT === */
+.nav-live-dot{display:inline-block;width:7px;height:7px;background:#2ecc71;border-radius:50%;margin-right:7px;animation:livePulse 2s infinite;vertical-align:middle;flex-shrink:0}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(46,204,113,.5)}50%{box-shadow:0 0 0 5px rgba(46,204,113,0)}}
 /* === NAV OPTIMIZATIONS === */
 #mainNav{height:64px;padding:0 24px}
 #mainNav.scrolled{height:56px}
@@ -523,12 +533,13 @@ ADVANCED SEO META (HVAC DOMINATION)
         <li><a href="/locations/faridabad/">Faridabad</a></li>
       </ul>
     </li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a data-page="industries" onclick="navigate('industries')">Industries</a></li>
     <li><a data-page="contact" onclick="navigate('contact')">Contact</a></li>
   </ul>
   <!-- COL 3: CTA + Hamburger -->
   <div class="nav-right">
-    <button class="nav-cta-btn" onclick="openChatbot()">📞 Consult Expert</button>
+    <a href="tel:+919312264832" class="nav-cta-btn"><span class="nav-live-dot"></span>Book AC Repair</a>
     <a href="tel:+919312264832" class="mob-call-btn" aria-label="Call now">📞</a>
     <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
       <span></span><span></span><span></span>
@@ -552,9 +563,10 @@ ADVANCED SEO META (HVAC DOMINATION)
     <a href="/locations/noida/">Noida</a>
     <a href="/locations/faridabad/">Faridabad</a>
   </div>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog &amp; AC Tips</a>
   <a onclick="navigate('industries');toggleMobileNav()">Industries</a>
   <a onclick="navigate('contact');toggleMobileNav()">Reviews &amp; Contact</a>
-  <a class="mob-cta" onclick="openChatbot();toggleMobileNav()">📞 Consult Expert →</a>
+  <a class="mob-cta" href="tel:+919312264832">📞 Call +91 93122 64832 →</a>
 </div>
 
 <!-- =========================================================
@@ -567,64 +579,63 @@ ADVANCED SEO META (HVAC DOMINATION)
     <canvas id="heroCanvas"></canvas>
     <div class="hero-content-wrap">
       <div class="hero-left">
-        <div class="hero-badge reveal"><span class="pulse-dot"></span>Trusted Since 1987 · Delhi's #1 Institutional HVAC</div>
-        <h1 class="display reveal d1">Where Air Conditioning Is<br><em>Engineered</em>,<br>Not Improvised</h1>
-        <p class="hero-sub reveal d2">Professional HVAC installation, HVAC AMC, and air conditioning services across Delhi NCR including Gurgaon, Noida, Faridabad, and Ghaziabad.
-
-We specialize in commercial HVAC systems, industrial air conditioning, VRF systems, central AC installation, and long-term HVAC maintenance contracts.
-
-Trusted since 1987, Air Control delivers engineering-grade HVAC solutions for factories, commercial buildings, hospitals, and critical infrastructure where performance and safety cannot be compromised.
-</p>
-<p style="margin-top:12px;color:rgba(255,255,255,.55);font-size:14px;">
-HVAC Company in Delhi NCR providing AC services, HVAC AMC, installation, repair, and maintenance solutions for residential, commercial, and industrial clients.
-</p>
+        <div class="hero-badge reveal"><span class="pulse-dot"></span>⚡ Same-Day AC Repair Available · Delhi NCR · Since 1987</div>
+        <h1 class="display reveal d1">AC Not Cooling?<br>Expert AC Repair &amp;<br><em>Service</em> in Delhi NCR</h1>
+        <p class="hero-sub reveal d2">Split AC blowing hot air? Strange noise? Water dripping? AC not starting? Our certified HVAC technicians fix every AC problem — same day across <strong style="color:rgba(255,255,255,.85)">Delhi, Gurgaon, Noida &amp; Faridabad</strong>.</p>
+        <p class="hero-sub reveal d2" style="margin-top:10px;font-size:15px;">AC repair · Gas refilling (R-32, R-410A) · Deep cleaning · Split AC installation · AC AMC — all brands: Daikin, Voltas, LG, Samsung, Blue Star, Carrier, Hitachi.</p>
         <div class="hero-actions reveal d3">
-          <button class="btn btn-gold btn-lg" onclick="openChatbot()">Get Free Assessment <span class="arrow-icon">→</span></button>
-          <button class="btn btn-navy btn-lg" onclick="navigate('why')">Why It Matters</button>
+          <a href="tel:+919312264832" class="btn btn-gold btn-lg">📞 Call for AC Repair <span class="arrow-icon">→</span></a>
+          <button class="btn btn-navy btn-lg" onclick="navigate('services')">Our Services ↓</button>
         </div>
         <div class="hero-stats-row reveal d4">
           <div class="hstat">
-            <div class="hstat-num"><span class="counter" data-t="15">0</span><em>+</em></div>
-            <div class="hstat-label">Embassies &amp; Consulates</div>
+            <div class="hstat-num"><span class="counter" data-t="10000">0</span><em>+</em></div>
+            <div class="hstat-label">ACs Repaired &amp; Serviced</div>
           </div>
           <div class="hstat">
             <div class="hstat-num"><span class="counter" data-t="38">0</span><em>+</em></div>
-            <div class="hstat-label">Years of Service</div>
+            <div class="hstat-label">Years in Delhi NCR</div>
           </div>
           <div class="hstat">
-            <div class="hstat-num"><span class="counter" data-t="500">0</span><em>+</em></div>
-            <div class="hstat-label">Projects Completed</div>
+            <div class="hstat-num">2<em>hr</em></div>
+            <div class="hstat-label">Emergency Response</div>
           </div>
           <div class="hstat">
-            <div class="hstat-num">100<em>%</em></div>
-            <div class="hstat-label">Safety Standard</div>
+            <div class="hstat-num">4.9<em>★</em></div>
+            <div class="hstat-label">Customer Rating</div>
           </div>
         </div>
       </div>
       <!-- HERO QUICK LEAD FORM -->
       <div class="hero-card-float reveal-r d2">
-        <h3>Get a Free Safety Assessment</h3>
-        <p>Our senior engineer will call you within 2 hours — no obligation, no sales pitch. Just honest expertise.</p>
+        <h3>Book AC Repair — Same-Day Response</h3>
+        <p>Tell us your AC problem. Our technician calls you back within 2 hours. No obligation, transparent pricing.</p>
         <div class="hero-form-quick">
           <div class="fq-row">
-            <input type="text" id="hf-name" placeholder="Your Full Name *" oninput="checkHeroFormInstantLead()">
+            <input type="text" id="hf-name" placeholder="Your Name *" oninput="checkHeroFormInstantLead()">
             <input type="tel" id="hf-phone" placeholder="Phone Number *" oninput="checkHeroFormInstantLead()">
           </div>
           <select id="hf-service" style="width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;font-size:13.5px;color:#6b7a99;outline:none;background:#f8f6f1;margin-bottom:10px;appearance:none;">
-            <option value="">Select Service Required...</option>
-            <option>New AC Installation</option>
-            <option>Commercial HVAC</option>
-            <option>AMC / Maintenance</option>
-            <option>Emergency Repair</option>
-            <option>System Audit</option>
-            <option>VRF / VRV / Chiller</option>
+            <option value="">What's the problem? *</option>
+            <option>AC not cooling / blowing hot air</option>
+            <option>AC gas leak / hissing sound</option>
+            <option>AC making noise (rattling/squealing)</option>
+            <option>Water dripping from AC</option>
+            <option>AC tripping electricity / MCB</option>
+            <option>AC not turning on</option>
+            <option>AC error code blinking</option>
+            <option>AC service / deep cleaning needed</option>
+            <option>New AC installation</option>
+            <option>AC AMC (Annual Maintenance)</option>
+            <option>Emergency repair — ASAP</option>
+            <option>Commercial HVAC / VRF system</option>
           </select>
-          <button class="btn btn-gold" style="width:100%;justify-content:center;font-size:14.5px;" onclick="submitHeroForm()">📋 Request Assessment <span class="arrow-icon">→</span></button>
-          <div class="hf-note">🔒 Private & secure — your details stay with our engineers only</div>
+          <button class="btn btn-gold" style="width:100%;justify-content:center;font-size:14.5px;" onclick="submitHeroForm()">📋 Book AC Repair — 2-Hr Response <span class="arrow-icon">→</span></button>
+          <div class="hf-note">🔒 Your details are private — shared only with our engineer</div>
           <div class="hf-trust">
-            <div class="hf-trust-item">Responds in 2 hrs</div>
-            <div class="hf-trust-item">No obligation</div>
-            <div class="hf-trust-item">Embassy-trusted</div>
+            <div class="hf-trust-item">Calls back in 2 hrs</div>
+            <div class="hf-trust-item">No hidden charges</div>
+            <div class="hf-trust-item">38 years trusted</div>
           </div>
         </div>
       </div>
@@ -633,14 +644,82 @@ HVAC Company in Delhi NCR providing AC services, HVAC AMC, installation, repair,
 
   <div class="trust-strip">
     <div class="trust-strip-inner">
-      <div class="ts-item">🛡 <strong>ISO-Grade</strong> Refrigerant Handling</div>
-      <div class="ts-item">🔬 <strong>Precision</strong> Pipe Welding</div>
-      <div class="ts-item">⚡ <strong>2-Hour</strong> Emergency Response</div>
-      <div class="ts-item">📋 <strong>Full-Accountability</strong> AMC</div>
-      <div class="ts-item">⭐ <strong>4.9 / 5.0</strong> · 150+ Verified Reviews</div>
-      <div class="ts-item">🏛 <strong>Vatican Embassy</strong> · DHL · Tanishq</div>
+      <div class="ts-item">⚡ <strong>Same-Day</strong> AC Repair Available</div>
+      <div class="ts-item">❄️ <strong>All Brands</strong> Serviced — Daikin, Voltas, LG, Blue Star</div>
+      <div class="ts-item">📞 <strong>2-Hour</strong> Emergency Response</div>
+      <div class="ts-item">💰 <strong>Transparent</strong> Pricing — No Hidden Charges</div>
+      <div class="ts-item">⭐ <strong>4.9/5.0</strong> · 150+ Verified Reviews</div>
+      <div class="ts-item">🏛 <strong>38 Years</strong> · Trusted by 15+ Embassies</div>
     </div>
   </div>
+
+  <!-- AC PROBLEMS SECTION — Funnel entry for problem-aware visitors -->
+  <section class="section section-light" id="ac-problems">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label text-royal">Common AC Problems</div>
+        <div class="gold-rule" style="margin:0 auto 20px;"></div>
+        <h2 class="headline">Is Your AC Doing <span class="text-gold">Any of These?</span></h2>
+        <p class="lead-text" style="max-width:600px;margin:16px auto 0;">Recognise your problem below. Every fault listed is fixed same-day by our certified technicians across Delhi, Gurgaon, Noida and Faridabad.</p>
+      </div>
+      <div class="prob-grid-home" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:40px">
+        <div class="prob-home-card reveal d1" onclick="navigate('services')">
+          <div class="prob-home-icon">❄️</div>
+          <h3>AC Not Cooling</h3>
+          <p>Room stays hot. AC runs but no cold air. Low gas, dirty coil, or compressor fault.</p>
+        </div>
+        <div class="prob-home-card reveal d1" onclick="navigate('services')">
+          <div class="prob-home-icon">🌡️</div>
+          <h3>AC Blowing Hot Air</h3>
+          <p>Warm air from vents even after 30 minutes. Gas leak or compressor issue.</p>
+        </div>
+        <div class="prob-home-card reveal d2" onclick="navigate('services')">
+          <div class="prob-home-icon">💧</div>
+          <h3>Water Dripping</h3>
+          <p>Water leaking from indoor unit onto floor or wall. Blocked drain or frozen coil.</p>
+        </div>
+        <div class="prob-home-card reveal d2" onclick="navigate('services')">
+          <div class="prob-home-icon">🔊</div>
+          <h3>Strange Noises</h3>
+          <p>Rattling, squealing, banging, clicking. Loose parts, failing motor or compressor.</p>
+        </div>
+        <div class="prob-home-card reveal d3" onclick="navigate('services')">
+          <div class="prob-home-icon">⚡</div>
+          <h3>Tripping Electricity</h3>
+          <p>MCB trips every time AC runs. Capacitor, compressor overload, or PCB short.</p>
+        </div>
+        <div class="prob-home-card reveal d3" onclick="navigate('services')">
+          <div class="prob-home-icon">🧊</div>
+          <h3>Ice on Pipes</h3>
+          <p>Ice forming on copper pipes or indoor coil. Critical — stop AC and call now.</p>
+        </div>
+        <div class="prob-home-card reveal d4" onclick="navigate('services')">
+          <div class="prob-home-icon">📟</div>
+          <h3>AC Not Starting</h3>
+          <p>AC dead on power button. PCB failure, capacitor, or power supply fault.</p>
+        </div>
+        <div class="prob-home-card reveal d4" onclick="navigate('services')">
+          <div class="prob-home-icon">💨</div>
+          <h3>Weak Airflow</h3>
+          <p>Very little air coming out. Choked filter, dirty blower, or fan motor issue.</p>
+        </div>
+        <div class="prob-home-card reveal d5" onclick="navigate('services')">
+          <div class="prob-home-icon">🦨</div>
+          <h3>Bad / Musty Smell</h3>
+          <p>Foul smell when AC runs. Mold on evaporator coil — needs chemical wash.</p>
+        </div>
+        <div class="prob-home-card reveal d5" onclick="navigate('services')">
+          <div class="prob-home-icon">📈</div>
+          <h3>High Electricity Bills</h3>
+          <p>Power consumption suddenly spiked. Low gas or dirty coil makes compressor overwork.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a href="tel:+919312264832" class="btn btn-gold btn-lg">📞 Call for Same-Day AC Repair <span class="arrow-icon">→</span></a>
+        <p style="margin-top:12px;font-size:13px;color:var(--gray)">Or <a href="https://wa.me/919312264832" style="color:var(--royal);font-weight:600" target="_blank">WhatsApp us</a> — describe your problem, get a callback in 2 hours</p>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="container">
@@ -890,9 +969,9 @@ HVAC Company in Delhi NCR providing AC services, HVAC AMC, installation, repair,
   <section class="page-hero">
     <div class="page-hero-grid"></div>
     <div class="container">
-      <div class="section-label text-gold reveal">What We Deliver</div>
-      <h2 class="headline text-white reveal d1">Consultant-First<br><em>HVAC Solutions</em></h2>
-      <p class="reveal d2">Every engagement begins with understanding your needs — not pushing a product. We engineer your solution. Then we deliver it with precision.</p>
+      <div class="section-label text-gold reveal">AC Repair · Service · Installation · AMC</div>
+      <h2 class="headline text-white reveal d1">Fix, Service or Install<br><em>Your AC Today</em></h2>
+      <p class="reveal d2">Same-day AC repair, deep cleaning, new AC installation and annual maintenance contracts across Delhi, Gurgaon, Noida and Faridabad. All brands. Transparent pricing.</p>
     </div>
   </section>
 
