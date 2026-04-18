@@ -181,9 +181,20 @@
   display:flex !important;
   justify-content:space-between;
   align-items:center;
+  width:100%;
+  background:none;
+  border:none;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 24px;
   cursor:pointer;
   color:rgba(255,255,255,.85) !important;
   font-weight:600 !important;
+  font-size:15px;
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.2px;
+  text-align:left;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
 .mob-section-header .mob-arrow{
   font-size:18px;
@@ -234,7 +245,7 @@
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:768px){#mainNav{height:60px;padding:0 8px 0 16px}.mobile-nav{top:60px}.nav-brand-sub{display:none}.mob-call-btn{display:flex}.nav-logo-mark{width:38px!important;height:38px!important}.nav-brand-name{font-size:17px}}
+@media(max-width:768px){#mainNav{height:60px;padding:0 4px 0 14px}.mobile-nav{top:60px}.nav-brand-sub{display:none}.mob-call-btn{display:flex}.nav-logo-mark{width:36px!important;height:36px!important}.nav-brand-name{font-size:16px}.hamburger{padding:8px 4px}}
 </style>
 <!-- =========================================================
 ADVANCED SEO META (HVAC DOMINATION)
@@ -506,10 +517,10 @@ ADVANCED SEO META (HVAC DOMINATION)
   </div>
   <!-- COL 2: Nav links (centered) -->
   <ul class="nav-links-list">
-    <li><a data-page="home" onclick="navigate('home')">Home</a></li>
-    <li><a data-page="why" onclick="navigate('why')">Why Air Control</a></li>
+    <li><a href="/" data-page="home" onclick="navigate('home');return false">Home</a></li>
+    <li><a href="/#why" data-page="why" onclick="navigate('why');return false">Why Air Control</a></li>
     <li class="nav-dropdown">
-      <a data-page="services" onclick="navigate('services')">Services ▾</a>
+      <a href="/#services" data-page="services" onclick="navigate('services');return false">Services ▾</a>
       <ul class="nav-dropdown-menu">
         <li><a href="/services/ac-repair/">AC Repair</a></li>
         <li><a href="/services/ac-service/">AC Service &amp; Cleaning</a></li>
@@ -526,8 +537,8 @@ ADVANCED SEO META (HVAC DOMINATION)
         <li><a href="/locations/faridabad/">Faridabad</a></li>
       </ul>
     </li>
-    <li><a data-page="industries" onclick="navigate('industries')">Industries</a></li>
-    <li><a data-page="contact" onclick="navigate('contact')">Contact</a></li>
+    <li><a href="/#industries" data-page="industries" onclick="navigate('industries');return false">Industries</a></li>
+    <li><a href="/#contact" data-page="contact" onclick="navigate('contact');return false">Contact</a></li>
   </ul>
   <!-- COL 3: CTA + Hamburger -->
   <div class="nav-right">
@@ -538,16 +549,16 @@ ADVANCED SEO META (HVAC DOMINATION)
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a onclick="navigate('home');toggleMobileNav()">Home</a>
-  <a onclick="navigate('why');toggleMobileNav()">Why Air Control</a>
-  <a class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></a>
+  <a href="/" onclick="navigate('home');toggleMobileNav();return false">Home</a>
+  <a href="/#why" onclick="navigate('why');toggleMobileNav();return false">Why Air Control</a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobServices">
     <a href="/services/ac-repair/">AC Repair</a>
     <a href="/services/ac-service/">AC Service &amp; Cleaning</a>
     <a href="/services/ac-installation/">AC Installation</a>
     <a href="/services/ac-amc/">AC Annual Maintenance (AMC)</a>
   </div>
-  <a class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></button>
   <div class="mob-section" id="mobLocations">
     <a href="/locations/delhi/">Delhi</a>
     <a href="/locations/gurgaon/">Gurgaon</a>
@@ -555,8 +566,8 @@ ADVANCED SEO META (HVAC DOMINATION)
     <a href="/locations/faridabad/">Faridabad</a>
   </div>
   <a href="/blog/" onclick="toggleMobileNav()">Blog &amp; AC Tips</a>
-  <a href="/#industries" onclick="toggleMobileNav()">Industries</a>
-  <a href="/#contact" onclick="navigate('contact');toggleMobileNav()">Reviews &amp; Contact</a>
+  <a href="/#industries" onclick="navigate('industries');toggleMobileNav();return false">Industries</a>
+  <a href="/#contact" onclick="navigate('contact');toggleMobileNav();return false">Reviews &amp; Contact</a>
   <a class="mob-cta" href="tel:+919312264832">📞 Call +91 93122 64832 →</a>
 </div>
 

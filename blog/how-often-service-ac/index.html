@@ -96,8 +96,28 @@
   </ul>
   <div class="nav-right">
     <a href="tel:+919312264832" class="nav-cta-btn">📞 Call Now</a>
+      <div class="hamburger" onclick="toggleMobileNav()" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <button class="mob-section-header" onclick="toggleMobSection('mobServices')">Services <span class="mob-arrow">›</span></button>
+  <div class="mob-section" id="mobServices">
+    <a href="/services/ac-repair/">AC Repair</a>
+    <a href="/services/ac-service/">AC Service &amp; Cleaning</a>
+    <a href="/services/ac-installation/">AC Installation</a>
+    <a href="/services/ac-amc/">AC Annual Maintenance (AMC)</a>
   </div>
-</nav>
+  <button class="mob-section-header" onclick="toggleMobSection('mobLocations')">Locations <span class="mob-arrow">›</span></button>
+  <div class="mob-section" id="mobLocations">
+    <a href="/locations/delhi/">Delhi</a>
+    <a href="/locations/gurgaon/">Gurgaon</a>
+    <a href="/locations/noida/">Noida</a>
+    <a href="/locations/faridabad/">Faridabad</a>
+  </div>
+  <a href="/blog/">Blog &amp; AC Tips</a>
+  <a href="/#contact">Contact</a>
+  <a class="mob-cta" href="tel:+919312264832">📞 Call +91 93122 64832 →</a>
+</div>
 
 <nav class="breadcrumb-nav" aria-label="Breadcrumb">
   <div class="breadcrumb-inner">
@@ -264,5 +284,27 @@
   </div>
   <div class="footer-bottom">© 2025 Air Control. All rights reserved.</div>
 </footer>
+<script>
+function toggleMobileNav(){
+  var nav=document.getElementById('mobileNav'),hbg=document.getElementById('hamburger');
+  nav.classList.toggle('open');hbg.classList.toggle('open');
+  if(!nav.classList.contains('open')){
+    document.querySelectorAll('.mob-section').forEach(function(s){s.classList.remove('expanded');});
+    document.querySelectorAll('.mob-section-header').forEach(function(s){s.classList.remove('expanded');});
+  }
+}
+function toggleMobSection(id){
+  var sec=document.getElementById(id);if(!sec)return;
+  var hdr=sec.previousElementSibling;
+  var isOpen=sec.classList.contains('expanded');
+  document.querySelectorAll('.mob-section').forEach(function(s){s.classList.remove('expanded');});
+  document.querySelectorAll('.mob-section-header').forEach(function(s){s.classList.remove('expanded');});
+  if(!isOpen){sec.classList.add('expanded');if(hdr)hdr.classList.add('expanded');}
+}
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('mainNav');
+  if(nav) nav.classList.toggle('scrolled',window.scrollY>60);
+});
+</script>
 </body>
 </html>
