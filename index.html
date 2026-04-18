@@ -222,6 +222,16 @@
   .nav-right .hamburger{display:none}
   .nav-right .nav-cta-btn{display:inline-flex}
 }
+/* === NAV OPTIMIZATIONS === */
+#mainNav{height:64px;padding:0 24px}
+#mainNav.scrolled{height:56px}
+.mobile-nav{top:64px}
+.mob-call-btn{display:none;align-items:center;gap:5px;background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--navy)!important;font-weight:700;font-size:13px;padding:9px 14px;border-radius:var(--r10);text-decoration:none;white-space:nowrap;border:none;cursor:pointer;line-height:1;flex-shrink:0}
+.mob-call-btn:hover{opacity:.9}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){#mainNav{height:60px;padding:0 16px}.mobile-nav{top:60px}.nav-brand-sub{display:none}.mob-call-btn{display:flex}.nav-logo-mark{width:38px!important;height:38px!important}.nav-brand-name{font-size:17px}}
 </style>
 <!-- =========================================================
 ADVANCED SEO META (HVAC DOMINATION)
@@ -519,6 +529,7 @@ ADVANCED SEO META (HVAC DOMINATION)
   <!-- COL 3: CTA + Hamburger -->
   <div class="nav-right">
     <button class="nav-cta-btn" onclick="openChatbot()">📞 Consult Expert</button>
+    <a href="tel:+919312264832" class="mob-call-btn" aria-label="Call now">📞</a>
     <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
       <span></span><span></span><span></span>
     </div>
